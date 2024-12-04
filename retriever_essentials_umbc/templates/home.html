@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    {% load static %}  <!-- Add this line to load static files -->
+</head>
+<body>
+    <h1>Welcome to the Retriever Essentials System</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'inventory_list' %}">Inventory Page</a></li>
+            {% if user.is_authenticated and user.is_staff %}
+                <!-- Only show Admin Page link if the logged-in user is an admin -->
+                <li><a href="{% url 'client_index' %}">Admin Page</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</body>
+</html>
